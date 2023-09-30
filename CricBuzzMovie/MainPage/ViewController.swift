@@ -61,33 +61,40 @@ extension ViewController: UITableViewDelegate {
         
         let titleLabel = UILabel()
         sectionHeader.addSubview(titleLabel)
-
+        
         titleLabel.text = "Section\(section)"
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: sectionHeader.centerYAnchor, constant: 0).isActive = true
-       
+        titleLabel.centerYAnchor.constraint(equalTo: sectionHeader.centerYAnchor, constant: 5).isActive = true
+        
         
         let rightArrow = UIImageView(frame: CGRect(x: 0, y: 0, width: 48, height: 48))
         sectionHeader.addSubview(rightArrow)
         
         rightArrow.image = UIImage(named: "rightArrow")
+        
+        
+        if !self.vm.data[section].isExpanded  {
+            rightArrow.transform = .init(rotationAngle: Double.zero)
+        } else {
+            rightArrow.transform = .init(rotationAngle: Double.pi / 2)
+        }
+        
         rightArrow.translatesAutoresizingMaskIntoConstraints = false
         rightArrow.trailingAnchor.constraint(equalTo: sectionHeader.trailingAnchor, constant: -15).isActive = true
         rightArrow.centerYAnchor.constraint(equalTo: sectionHeader.centerYAnchor, constant: 0).isActive = true
         
         
-        
-        let lineView = UIImageView()
-        sectionHeader.addSubview(lineView)
-        
-        lineView.backgroundColor = .gray
-        lineView.translatesAutoresizingMaskIntoConstraints = false
-        lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        lineView.trailingAnchor.constraint(equalTo: sectionHeader.trailingAnchor, constant: -15).isActive = true
-        lineView.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
-        lineView.bottomAnchor.constraint(equalTo: sectionHeader.bottomAnchor, constant: 0).isActive = true
-        
+        if !vm.data[section].isExpanded {
+            let lineView = UIImageView()
+            sectionHeader.addSubview(lineView)
+            lineView.backgroundColor = .gray
+            lineView.translatesAutoresizingMaskIntoConstraints = false
+            lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+            lineView.trailingAnchor.constraint(equalTo: sectionHeader.trailingAnchor, constant: -15).isActive = true
+            lineView.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
+            lineView.bottomAnchor.constraint(equalTo: sectionHeader.bottomAnchor, constant: 0).isActive = true
+        }
         
         return sectionHeader
     }
@@ -102,6 +109,6 @@ extension ViewController: UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        50.0
+        60.0
     }
 }
