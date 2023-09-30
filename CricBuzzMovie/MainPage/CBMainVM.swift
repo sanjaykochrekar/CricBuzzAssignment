@@ -36,42 +36,99 @@ class CBMainVM {
     
     
     private func setData() {
-        var item = CBSectionDataModel(title: "Genre")
-        let category1 = CBCategoryDataModel(category: "Drama")
-        let category2 = CBCategoryDataModel(category: "Sports")
-        let category3 = CBCategoryDataModel(category: "Romance")
-        let category4 = CBCategoryDataModel(category: "Action")
-        item.row.append(category1)
-        item.row.append(category2)
-        item.row.append(category3)
-        item.row.append(category4)
-        data.append(item)
-        
-        
-        var item2 = CBSectionDataModel(title: "Year")
-        let item2c1 = CBCategoryDataModel(category: "2021")
-        let item2c2 = CBCategoryDataModel(category: "2022")
-        let item2c3 = CBCategoryDataModel(category: "2019")
-        let item2c4 = CBCategoryDataModel(category: "2020")
-        item2.row.append(item2c1)
-        item2.row.append(item2c2)
-        item2.row.append(item2c3)
-        item2.row.append(item2c4)
-        data.append(item2)
-        
-
-        
-        
-        var itemAll = CBSectionDataModel(title: "All Movies")
-        itemAll.row.append(movieList[0])
-        itemAll.row.append(movieList[0])
-        itemAll.row.append(movieList[0])
-        itemAll.row.append(movieList[0])
-        data.append(itemAll)
+        data.append(getGenre())
+        data.append(getYear())
+        data.append(getActors())
+        data.append(getDirectors())
+        data.append(getAllMovies())
     }
     
     
     func toggleSection(_ section: Int) {
         data[section].isExpanded.toggle()
+    }
+    
+}
+
+
+
+// MARK: - Filter Functions
+extension CBMainVM {
+    
+    func getGenre() -> CBSectionDataModel {
+        var genreList = Set<String>()
+        for (_, item) in movieList.enumerated() {
+            let stringList = item.genre.components(separatedBy: ",")
+            let cleanlist = stringList.map {$0.trimmingCharacters(in: .whitespaces)}
+            genreList.formUnion(cleanlist)
+        }
+        
+        var genre = CBSectionDataModel(title: "Genre")
+        for (_, item ) in genreList.sorted().enumerated() {
+            genre.row.append(CBCategoryDataModel(category: item))
+        }
+        return genre
+    }
+    
+    
+    func getYear() -> CBSectionDataModel {
+        var yearList = Set<String>()
+        let formatter = DateFormatter()
+        
+        for (_, item) in movieList.enumerated() {
+            formatter.dateFormat = "dd MMM yyyy"
+            
+            if let date = formatter.date(from: item.released) {
+                formatter.dateFormat = "yyyy"
+                yearList.insert(formatter.string(from: date))
+            }
+        }
+        
+        var year = CBSectionDataModel(title: "Year")
+        
+        for (_, item ) in yearList.sorted().enumerated() {
+            year.row.append(CBCategoryDataModel(category: item))
+        }
+       
+        return year
+    }
+    
+    func getActors() -> CBSectionDataModel {
+        var genreList = Set<String>()
+        
+        for (_, item) in movieList.enumerated() {
+            let stringList = item.actors.components(separatedBy: ",")
+            let cleanlist = stringList.map {$0.trimmingCharacters(in: .whitespaces)}
+            genreList.formUnion(cleanlist)
+        }
+        
+        var genre = CBSectionDataModel(title: "Actors")
+        for (_, item ) in genreList.sorted().enumerated() {
+            genre.row.append(CBCategoryDataModel(category: item))
+        }
+        return genre
+    }
+    
+    func getDirectors() -> CBSectionDataModel {
+        var genreList = Set<String>()
+        
+        for (_, item) in movieList.enumerated() {
+            let stringList = item.director.components(separatedBy: ",")
+            let cleanlist = stringList.map {$0.trimmingCharacters(in: .whitespaces)}
+            genreList.formUnion(cleanlist)
+        }
+        
+        var genre = CBSectionDataModel(title: "Directors")
+        for (_, item ) in genreList.sorted().enumerated() {
+            genre.row.append(CBCategoryDataModel(category: item))
+        }
+        return genre
+    }
+    
+    
+    func getAllMovies() -> CBSectionDataModel {
+        var allItems = CBSectionDataModel(title: "All Movies")
+        allItems.row.append(contentsOf: movieList)
+        return allItems
     }
 }
