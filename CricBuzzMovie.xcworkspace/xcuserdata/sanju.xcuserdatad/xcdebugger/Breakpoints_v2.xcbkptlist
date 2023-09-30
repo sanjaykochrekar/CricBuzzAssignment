@@ -14,8 +14,8 @@
             filePath = "CricBuzzMovie/MainPage/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "numberOfSections(in:)"
             landmarkType = "7">
             <Locations>
@@ -77,10 +77,10 @@
             filePath = "CricBuzzMovie/MainPage/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "ViewController"
-            landmarkType = "21">
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "searchBarTextDidBeginEditing(_:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "BC483E27-0FE4-47B4-859C-4D74292B017E - 993ab5d1eb8df14d"
@@ -140,9 +140,9 @@
             filePath = "CricBuzzMovie/MainPage/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "searchBarTextDidBeginEditing(_:)"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "searchBarTextDidEndEditing(_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -188,9 +188,9 @@
             filePath = "CricBuzzMovie/MainPage/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "tableView(_:viewForHeaderInSection:)"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "toggleSection(_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -236,9 +236,9 @@
             filePath = "CricBuzzMovie/MainPage/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "tableView(_:viewForHeaderInSection:)"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "toggleSection(_:)"
             landmarkType = "7">
             <Locations>
                <Location

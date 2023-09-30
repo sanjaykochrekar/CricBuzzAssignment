@@ -18,6 +18,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         registerCell()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+               NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     
@@ -166,5 +168,15 @@ extension ViewController: UISearchBarDelegate {
         DispatchQueue.main.async { [weak self] in
             self?.movieUITableView.reloadData()
         }
+    }
+}
+
+extension ViewController {
+    @objc func keyboardWillShowNotification(_ notification: Notification) {
+        
+    }
+    
+    @objc func keyboardWillHideNotification(_ notification: NSNotification) {
+        
     }
 }
