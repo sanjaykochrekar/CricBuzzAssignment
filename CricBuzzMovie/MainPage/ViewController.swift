@@ -56,6 +56,8 @@ extension ViewController: UITableViewDelegate {
         let sectionHeader = UIView()
         sectionHeader.backgroundColor = .white
         sectionHeader.tag = section
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.toggleSection(_:)))
+        sectionHeader.addGestureRecognizer(tap)
         
         let titleLabel = UILabel()
         sectionHeader.addSubview(titleLabel)
@@ -88,6 +90,14 @@ extension ViewController: UITableViewDelegate {
         
         
         return sectionHeader
+    }
+    
+    @objc func toggleSection(_ sender: UITapGestureRecognizer) {
+        if let section = sender.view?.tag {
+            vm.toggleSection(section)
+            movieUITableView.reloadSections(IndexSet(integer: section), with: .fade)
+            print(section)
+        }
     }
     
     

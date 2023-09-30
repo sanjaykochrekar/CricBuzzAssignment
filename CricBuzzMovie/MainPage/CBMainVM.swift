@@ -34,6 +34,7 @@ class CBMainVM {
         }
     }
     
+    
     private func setData() {
         var item = CBSectionDataModel()
         let category1 = CBCategoryDataModel(category: "Drama")
@@ -57,7 +58,10 @@ class CBMainVM {
         itemAll.row.append(movieList[0])
         itemAll.row.append(movieList[0])
         data.append(itemAll)
- 
-        
+    }
+    
+    
+    func toggleSection(_ section: Int) {
+        data[section].isExpanded.toggle()
     }
 }

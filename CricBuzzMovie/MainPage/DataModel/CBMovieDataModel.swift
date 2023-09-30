@@ -8,7 +8,7 @@
 struct CBSectionDataModel {
     var row: [CBListViewCellDataModel] = []
     var title: String?
-    let isExpanded: Bool = false
+    var isExpanded: Bool = false
 }
 
 struct CBCategoryDataModel: CBListViewCellDataModel {
