@@ -8,13 +8,21 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var movieUITableView: UITableView!
+    
     lazy var vm: CBMainVM = CBMainVM()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+        registerCell()
     }
 
+    
+    private func registerCell() {
+        movieUITableView.register(UINib(nibName: "CBMovieTypeTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieTypeTVCell")
+
+    }
 }
 
 
@@ -32,8 +40,7 @@ extension ViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "abcd"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CBMovieTypeTVCell", for: indexPath)
         return cell
     }
     

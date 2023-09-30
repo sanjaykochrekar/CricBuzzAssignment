@@ -56,6 +56,9 @@
                             <constraint firstItem="Axq-Qd-EWF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wkR-yW-6vm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="movieUITableView" destination="8P3-ne-Qfj" id="4TA-ut-qkl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
