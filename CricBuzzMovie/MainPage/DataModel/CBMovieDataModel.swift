@@ -8,11 +8,16 @@
 struct CBSectionDataModel {
     var row: [CBListViewCellDataModel] = []
     var title: String?
-    let isExpanded: Bool = true
+    let isExpanded: Bool = false
+}
+
+struct CBCategoryDataModel: CBListViewCellDataModel {
+    var identifier: String = "CBMovieCategoryTVCell"
+    var category: String
 }
 
 
-// MARK: - WelcomeElement
+// MARK: - CBPostDataModel
 struct CBPostDataModel: Codable, CBListViewCellDataModel {
     var identifier: String = "CBMovieTypeTVCell"
     

@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     
     private func registerCell() {
         movieUITableView.register(UINib(nibName: "CBMovieTypeTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieTypeTVCell")
+        movieUITableView.register(UINib(nibName: "CBMovieCategoryTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieCategoryTVCell")
 
     }
 }
@@ -40,7 +41,8 @@ extension ViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CBMovieTypeTVCell", for: indexPath)
+        let cellData = vm.data[indexPath.section].row[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellData.identifier, for: indexPath)
         return cell
     }
     
