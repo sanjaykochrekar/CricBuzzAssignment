@@ -36,7 +36,7 @@ class CBMainVM {
     
     
     private func setData() {
-        var item = CBSectionDataModel()
+        var item = CBSectionDataModel(title: "Genre")
         let category1 = CBCategoryDataModel(category: "Drama")
         let category2 = CBCategoryDataModel(category: "Sports")
         let category3 = CBCategoryDataModel(category: "Romance")
@@ -46,10 +46,20 @@ class CBMainVM {
         item.row.append(category3)
         item.row.append(category4)
         data.append(item)
-        data.append(item)
-        data.append(item)
-        data.append(item)
- 
+        
+        
+        var item2 = CBSectionDataModel(title: "Year")
+        let item2c1 = CBCategoryDataModel(category: "2021")
+        let item2c2 = CBCategoryDataModel(category: "2022")
+        let item2c3 = CBCategoryDataModel(category: "2019")
+        let item2c4 = CBCategoryDataModel(category: "2020")
+        item2.row.append(item2c1)
+        item2.row.append(item2c2)
+        item2.row.append(item2c3)
+        item2.row.append(item2c4)
+        data.append(item2)
+        
+
         
         
         var itemAll = CBSectionDataModel(title: "All Movies")

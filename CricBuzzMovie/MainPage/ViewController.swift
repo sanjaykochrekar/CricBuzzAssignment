@@ -63,7 +63,7 @@ extension ViewController: UITableViewDelegate {
         let titleLabel = UILabel()
         sectionHeader.addSubview(titleLabel)
         
-        titleLabel.text = "Section\(section)"
+        titleLabel.text = vm.data[section].title
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: sectionHeader.centerYAnchor, constant: 0).isActive = true
