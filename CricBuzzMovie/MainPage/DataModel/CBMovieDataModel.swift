@@ -18,7 +18,7 @@ struct CBCategoryDataModel: CBListViewCellDataModel {
 
 
 // MARK: - CBPostDataModel
-struct CBPostDataModel: Codable, CBListViewCellDataModel {
+struct CBMovieDataModel: Codable, CBListViewCellDataModel {
     var identifier: String = "CBMovieTypeTVCell"
     
     let title, year, rated, released: String

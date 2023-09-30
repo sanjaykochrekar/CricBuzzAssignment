@@ -22,3 +22,14 @@ class CBMovieCategoryTVCell: UITableViewCell {
     }
     
 }
+
+
+extension CBMovieCategoryTVCell: CBListViewCell {
+    
+    func populate(_ data: CBListViewCellDataModel, indexPath: IndexPath?) {
+        if let safeData = data as? CBCategoryDataModel {
+            categoryName.text = safeData.category
+        }
+    }
+}
+

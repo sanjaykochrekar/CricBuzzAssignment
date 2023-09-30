@@ -42,8 +42,9 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellData = vm.data[indexPath.section].row[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellData.identifier, for: indexPath)
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellData.identifier, for: indexPath) as? CBListViewCell
+        cell?.populate(cellData, indexPath: indexPath)
+        return cell as! UITableViewCell
     }
     
 }
@@ -65,7 +66,7 @@ extension ViewController: UITableViewDelegate {
         titleLabel.text = "Section\(section)"
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: sectionHeader.centerYAnchor, constant: 5).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: sectionHeader.centerYAnchor, constant: 0).isActive = true
         
         
         let rightArrow = UIImageView(frame: CGRect(x: 0, y: 0, width: 48, height: 48))
@@ -103,7 +104,6 @@ extension ViewController: UITableViewDelegate {
         if let section = sender.view?.tag {
             vm.toggleSection(section)
             movieUITableView.reloadSections(IndexSet(integer: section), with: .fade)
-            print(section)
         }
     }
     

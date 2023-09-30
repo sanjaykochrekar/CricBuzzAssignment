@@ -36,3 +36,15 @@ class CBMovieTypeTVCell: UITableViewCell {
     }
     
 }
+
+
+extension CBMovieTypeTVCell: CBListViewCell {
+    
+    func populate(_ data: CBListViewCellDataModel, indexPath: IndexPath?) {
+        if let safeData = data as? CBMovieDataModel {
+            movieName.text = safeData.title
+            language.text = "Language: \(safeData.language)"
+            year.text = "Year: \(safeData.year)"
+        }
+    }
+}

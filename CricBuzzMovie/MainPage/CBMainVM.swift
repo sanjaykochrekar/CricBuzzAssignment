@@ -11,7 +11,7 @@ import Foundation
 
 
 class CBMainVM {
-    private var movieList:[CBPostDataModel] = []
+    private var movieList:[CBMovieDataModel] = []
     var data: [CBSectionDataModel] = []
     
     
@@ -26,7 +26,7 @@ class CBMainVM {
             do {
                 let movieData = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
-                movieList = try decoder.decode([CBPostDataModel].self, from: movieData)
+                movieList = try decoder.decode([CBMovieDataModel].self, from: movieData)
                 
             } catch {
                 print("error:\(error)")
