@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var movieUITableView: UITableView!
+    @IBOutlet weak var movieSearchBar: UISearchBar!
+
     
     lazy var vm: CBMainVM = CBMainVM()
 
@@ -54,66 +56,115 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionHeader = UIView()
-        sectionHeader.backgroundColor = .white
-        sectionHeader.tag = section
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.toggleSection(_:)))
-        sectionHeader.addGestureRecognizer(tap)
-        
-        let titleLabel = UILabel()
-        sectionHeader.addSubview(titleLabel)
-        
-        titleLabel.text = vm.data[section].title
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: sectionHeader.centerYAnchor, constant: 0).isActive = true
-        
-        
-        let rightArrow = UIImageView(frame: CGRect(x: 0, y: 0, width: 48, height: 48))
-        sectionHeader.addSubview(rightArrow)
-        
-        rightArrow.image = UIImage(named: "rightArrow")
-        
-        
-        if !self.vm.data[section].isExpanded  {
-            rightArrow.transform = .init(rotationAngle: Double.zero)
-        } else {
-            rightArrow.transform = .init(rotationAngle: Double.pi / 2)
+        if !vm.isSearching {
+            let sectionHeader = UIView()
+            sectionHeader.backgroundColor = .white
+            sectionHeader.tag = section
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.toggleSection(_:)))
+
+            sectionHeader.addGestureRecognizer(tap)
+            
+            let titleLabel = UILabel()
+            sectionHeader.addSubview(titleLabel)
+            
+            titleLabel.text = vm.data[section].title
+            titleLabel.translatesAutoresizingMaskIntoConstraints = false
+            titleLabel.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
+            titleLabel.centerYAnchor.constraint(equalTo: sectionHeader.centerYAnchor, constant: 0).isActive = true
+            
+            
+            let rightArrow = UIImageView(frame: CGRect(x: 0, y: 0, width: 48, height: 48))
+            sectionHeader.addSubview(rightArrow)
+            
+            rightArrow.image = UIImage(named: "rightArrow")
+            
+            
+            if !self.vm.data[section].isExpanded  {
+                rightArrow.transform = .init(rotationAngle: Double.zero)
+            } else {
+                rightArrow.transform = .init(rotationAngle: Double.pi / 2)
+            }
+            
+            rightArrow.translatesAutoresizingMaskIntoConstraints = false
+            rightArrow.trailingAnchor.constraint(equalTo: sectionHeader.trailingAnchor, constant: -15).isActive = true
+            rightArrow.centerYAnchor.constraint(equalTo: sectionHeader.centerYAnchor, constant: 0).isActive = true
+            
+            
+            if !vm.data[section].isExpanded {
+                let lineView = UIImageView()
+                sectionHeader.addSubview(lineView)
+                lineView.backgroundColor = .gray
+                lineView.translatesAutoresizingMaskIntoConstraints = false
+                lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+                lineView.trailingAnchor.constraint(equalTo: sectionHeader.trailingAnchor, constant: -15).isActive = true
+                lineView.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
+                lineView.bottomAnchor.constraint(equalTo: sectionHeader.bottomAnchor, constant: 0).isActive = true
+            }
+                 
+            
+            return sectionHeader
         }
-        
-        rightArrow.translatesAutoresizingMaskIntoConstraints = false
-        rightArrow.trailingAnchor.constraint(equalTo: sectionHeader.trailingAnchor, constant: -15).isActive = true
-        rightArrow.centerYAnchor.constraint(equalTo: sectionHeader.centerYAnchor, constant: 0).isActive = true
-        
-        
-        if !vm.data[section].isExpanded {
-            let lineView = UIImageView()
-            sectionHeader.addSubview(lineView)
-            lineView.backgroundColor = .gray
-            lineView.translatesAutoresizingMaskIntoConstraints = false
-            lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
-            lineView.trailingAnchor.constraint(equalTo: sectionHeader.trailingAnchor, constant: -15).isActive = true
-            lineView.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
-            lineView.bottomAnchor.constraint(equalTo: sectionHeader.bottomAnchor, constant: 0).isActive = true
-        }
-        
-        return sectionHeader
+        return nil
     }
     
     @objc func toggleSection(_ sender: UITapGestureRecognizer) {
         if let section = sender.view?.tag {
             vm.toggleSection(section)
-            movieUITableView.reloadSections(IndexSet(integer: section), with: .fade)
+            DispatchQueue.main.async { [weak self] in
+                self?.movieUITableView.reloadSections(IndexSet(integer: section), with: .fade)
+            }
         }
     }
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        60.0
+        vm.isSearching ? 0 : 60.0
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+    }
+}
+
+
+extension ViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        vm.isSearching = !vm.searchString.isEmpty
+        if !vm.isSearching {
+            vm.setData()
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.movieUITableView.reloadData()
+        }
+    }
+    
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+        vm.isSearching = !vm.searchString.isEmpty
+        if !vm.isSearching {
+            vm.setData()
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.movieUITableView.reloadData()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        DispatchQueue.main.async { [weak self] in
+            self?.movieUITableView.reloadData()
+        }
+        vm.searchString = searchText
+        vm.isSearching = !searchText.isEmpty
+        if searchText.isEmpty {
+            vm.setData()
+        } else {
+            vm.searchMovie()
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.movieUITableView.reloadData()
+        }
     }
 }

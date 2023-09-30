@@ -13,6 +13,8 @@ import Foundation
 class CBMainVM {
     private var movieList:[CBMovieDataModel] = []
     var data: [CBSectionDataModel] = []
+    var isSearching = false
+    var searchString = ""
     
     
     init() {
@@ -35,7 +37,14 @@ class CBMainVM {
     }
     
     
-    private func setData() {
+    func searchMovie() {
+        data.removeAll()
+        data.append(searchMovie(searchString))
+    }
+    
+    
+    func setData() {
+        data.removeAll()
         data.append(getGenre())
         data.append(getYear())
         data.append(getActors())
@@ -130,5 +139,27 @@ extension CBMainVM {
         var allItems = CBSectionDataModel(title: "All Movies")
         allItems.row.append(contentsOf: movieList)
         return allItems
+    }
+    
+    
+    private func searchMovie(_ search: String) -> CBSectionDataModel {
+        var allItems = CBSectionDataModel()
+        allItems.isExpanded = true
+        allItems.row.append(contentsOf: movieList.filter({ item in
+            let titleMatch = item.title.containsIgnoringCase(find: search)
+            
+            return false || titleMatch
+        }))
+        return allItems
+    }
+}
+
+
+extension String {
+    func contains(find: String) -> Bool{
+        return self.range(of: find) != nil
+    }
+    func containsIgnoringCase(find: String) -> Bool{
+        return self.range(of: find, options: .caseInsensitive) != nil
     }
 }

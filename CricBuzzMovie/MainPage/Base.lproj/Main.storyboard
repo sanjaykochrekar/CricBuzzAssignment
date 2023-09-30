@@ -57,6 +57,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="movieSearchBar" destination="fM9-8q-i6j" id="AYA-GM-Sxk"/>
                         <outlet property="movieUITableView" destination="8P3-ne-Qfj" id="4TA-ut-qkl"/>
                     </connections>
                 </viewController>
