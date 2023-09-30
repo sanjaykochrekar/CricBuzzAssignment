@@ -18,6 +18,38 @@
             endingLineNumber = "34"
             landmarkName = "numberOfSections(in:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "07319BF4-4754-43A8-AA07-1FA4E9707F66 - d8239c356c6b1ecc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CricBuzzMovie.ViewController.numberOfSections(in: __C.UITableView) -&gt; Swift.Int"
+                  moduleName = "CricBuzzMovie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanju/Project/iOS/CricBuzzAssignment/CricBuzzMovie/MainPage/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "07319BF4-4754-43A8-AA07-1FA4E9707F66 - d8239c356c6b1fd4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CricBuzzMovie.ViewController.numberOfSections(in: __C.UITableView) -&gt; Swift.Int"
+                  moduleName = "CricBuzzMovie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanju/Project/iOS/CricBuzzAssignment/CricBuzzMovie/MainPage/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
