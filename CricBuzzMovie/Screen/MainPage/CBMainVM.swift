@@ -102,6 +102,7 @@ extension CBMainVM {
         return year
     }
     
+    
     func getActors() -> CBSectionDataModel {
         var genreList = Set<String>()
         
@@ -117,6 +118,7 @@ extension CBMainVM {
         }
         return genre
     }
+    
     
     func getDirectors() -> CBSectionDataModel {
         var genreList = Set<String>()
@@ -173,11 +175,13 @@ extension CBMainVM {
         }
     }
     
+    
     private func getOnlyGenre(genre: String) -> [CBMovieDataModel] {
         movieList.filter { item in
             item.genre.containsIgnoringCase(find: genre)
         }
     }
+    
     
     private func getOnlyYear(year: String) -> [CBMovieDataModel] {
         movieList.filter { item in
@@ -185,11 +189,13 @@ extension CBMainVM {
         }
     }
      
+    
     private func getOnlyActor(actor: String) -> [CBMovieDataModel] {
         movieList.filter { item in
             item.actors.containsIgnoringCase(find: actor)
         }
     }
+    
     
     private func getOnlyDirector(director: String) -> [CBMovieDataModel] {
         movieList.filter { item in
@@ -197,14 +203,4 @@ extension CBMainVM {
         }
     }
     
-}
-
-
-extension String {
-    func contains(find: String) -> Bool{
-        return self.range(of: find) != nil
-    }
-    func containsIgnoringCase(find: String) -> Bool{
-        return self.range(of: find, options: .caseInsensitive) != nil
-    }
 }

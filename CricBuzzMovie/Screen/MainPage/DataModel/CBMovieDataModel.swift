@@ -5,12 +5,15 @@
 //  Created by Sanju on 30/09/23.
 //
 
+
+// MARK: - CBSectionDataModel
 struct CBSectionDataModel {
     var row: [CBListViewCellDataModel] = []
     var title: String?
     var isExpanded: Bool = false
 }
 
+// MARK: - CBCategoryDataModel
 struct CBCategoryDataModel: CBListViewCellDataModel {
     var identifier: String = "CBMovieCategoryTVCell"
     var category: String
@@ -63,11 +66,14 @@ struct CBMovieDataModel: Codable, CBListViewCellDataModel {
     }
 }
 
+
+// MARK: - DVD
 enum DVD: String, Codable {
     case nA = "N/A"
     case the28Nov2000 = "28 Nov 2000"
     case the30Jan2007 = "30 Jan 2007"
 }
+
 
 // MARK: - Rating
 struct Rating: Codable {
@@ -80,15 +86,18 @@ struct Rating: Codable {
     }
 }
 
+
 enum Source: String, Codable {
     case internetMovieDatabase = "Internet Movie Database"
     case metacritic = "Metacritic"
     case rottenTomatoes = "Rotten Tomatoes"
 }
 
+
 enum Response: String, Codable {
     case responseTrue = "True"
 }
+
 
 enum TypeEnum: String, Codable {
     case movie = "movie"

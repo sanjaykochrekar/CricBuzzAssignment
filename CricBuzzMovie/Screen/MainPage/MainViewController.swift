@@ -7,7 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+
+
+class MainViewController: UIViewController {
+    
     @IBOutlet weak var movieUITableView: UITableView!
     @IBOutlet weak var movieSearchBar: UISearchBar!
     
@@ -23,11 +27,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        hideKeyboardWhenTappedAround()
+        //hideKeyboardWhenTappedAround()
         registerCell()
     }
     
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -38,11 +42,12 @@ class ViewController: UIViewController {
         movieUITableView.register(UINib(nibName: "CBMovieTypeTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieTypeTVCell")
         movieUITableView.register(UINib(nibName: "CBMovieCategoryTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieCategoryTVCell")
     }
+    
 }
 
 
 // MARK: - UITableViewDataSource
-extension ViewController: UITableViewDataSource {
+extension MainViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         vm.data.count
@@ -64,17 +69,19 @@ extension ViewController: UITableViewDataSource {
 }
 
 
-// MARK: -
-
-extension ViewController: UITableViewDelegate {
+// MARK: - UITableViewDelegate Methods
+extension MainViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if !vm.isSearching {
             let sectionHeader = UIView()
+            sectionHeader.backgroundColor = UIColor.appColor(.background)
             sectionHeader.tag = section
+            
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.toggleSection(_:)))
             tap.cancelsTouchesInView = false
-            
             sectionHeader.addGestureRecognizer(tap)
+            
             
             let titleLabel = UILabel()
             sectionHeader.addSubview(titleLabel)
@@ -112,12 +119,11 @@ extension ViewController: UITableViewDelegate {
                 lineView.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
                 lineView.bottomAnchor.constraint(equalTo: sectionHeader.bottomAnchor, constant: 0).isActive = true
             }
-            
-            
             return sectionHeader
         }
         return nil
     }
+    
     
     @objc func toggleSection(_ sender: UITapGestureRecognizer) {
         if let section = sender.view?.tag {
@@ -138,7 +144,7 @@ extension ViewController: UITableViewDelegate {
         if vm.data[indexPath.section].row[indexPath.row].identifier == "CBMovieCategoryTVCell" {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let categoryVC = storyboard.instantiateViewController(withIdentifier: "CBCategoryViewController") as! CBCategoryViewController
-           
+            
             if let title =  vm.data[indexPath.section].row[indexPath.row] as? CBCategoryDataModel {
                 categoryVC.title = title.category
                 categoryVC.movieList = vm.getMovieListForNextScreen(type: vm.data[indexPath.section].title ?? "", search: title.category)
@@ -151,10 +157,11 @@ extension ViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(deatilVC, animated: true)
         }
     }
+    
 }
 
-
-extension ViewController: UISearchBarDelegate {
+// MARK: - UISearchBarDelegate Methods
+extension MainViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         vm.isSearching = !vm.searchString.isEmpty
@@ -178,10 +185,8 @@ extension ViewController: UISearchBarDelegate {
         }
     }
     
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        DispatchQueue.main.async { [weak self] in
-//            self?.movieUITableView.reloadData()
-//        }
         vm.searchString = searchText
         vm.isSearching = !searchText.isEmpty
         if searchText.isEmpty {
@@ -193,6 +198,7 @@ extension ViewController: UISearchBarDelegate {
             self?.movieUITableView.reloadData()
         }
     }
+    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
