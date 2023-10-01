@@ -12,8 +12,9 @@
         <!--Navigation Controller-->
         <scene sceneID="oUl-W5-BjV">
             <objects>
-                <navigationController navigationBarHidden="YES" id="8Uj-rN-Oan" sceneMemberID="viewController">
+                <navigationController id="8Uj-rN-Oan" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AQY-Xj-alB">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -33,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Axq-Qd-EWF">
-                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="60"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search movies by title/actor/genre/director" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fM9-8q-i6j">
                                         <rect key="frame" x="4" y="2" width="385" height="56"/>
@@ -52,10 +53,10 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8P3-ne-Qfj">
-                                <rect key="frame" x="0.0" y="119" width="393" height="699"/>
+                                <rect key="frame" x="0.0" y="163" width="393" height="655"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="hdp-6v-O44"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Kns-xe-dwq"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="jjN-Gp-r1o"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -81,16 +82,36 @@
             </objects>
             <point key="canvasLocation" x="-879" y="18"/>
         </scene>
-        <!--View Controller-->
+        <!--Category View Controller-->
         <scene sceneID="xqc-W5-SBM">
             <objects>
-                <viewController id="47M-1p-Yk2" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CBCategoryViewController" id="47M-1p-Yk2" customClass="CBCategoryViewController" customModule="CricBuzzMovie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xpB-4c-vJK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ6-r0-RzX">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="47M-1p-Yk2" id="uxr-Ii-6sl"/>
+                                    <outlet property="delegate" destination="47M-1p-Yk2" id="Jty-qi-4gF"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="wRr-rP-hra"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wRr-rP-hra" firstAttribute="trailing" secondItem="ZQ6-r0-RzX" secondAttribute="trailing" id="Nyv-Ge-EKw"/>
+                            <constraint firstItem="ZQ6-r0-RzX" firstAttribute="leading" secondItem="wRr-rP-hra" secondAttribute="leading" id="PvO-el-1vW"/>
+                            <constraint firstItem="wRr-rP-hra" firstAttribute="bottom" secondItem="ZQ6-r0-RzX" secondAttribute="bottom" id="W5s-P7-nPo"/>
+                            <constraint firstItem="ZQ6-r0-RzX" firstAttribute="top" secondItem="wRr-rP-hra" secondAttribute="top" id="c2b-0d-IKs"/>
+                        </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="movieUITableView" destination="ZQ6-r0-RzX" id="Sc9-JE-Fs6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PSK-eK-s1T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

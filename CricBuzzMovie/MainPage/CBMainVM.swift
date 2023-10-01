@@ -155,6 +155,51 @@ extension CBMainVM {
 }
 
 
+// MARK: - Next Screen query
+extension CBMainVM {
+    
+    func getMovieListForNextScreen(type: String, search: String) -> [CBMovieDataModel] {
+        switch type {
+        case "Genre":
+            return getOnlyGenre(genre: search)
+        case "Year":
+            return getOnlyYear(year: search)       
+        case "Actors":
+            return getOnlyActor(actor: search)
+        case "Directors":
+            return getOnlyDirector(director: search)
+        default:
+            return movieList
+        }
+    }
+    
+    private func getOnlyGenre(genre: String) -> [CBMovieDataModel] {
+        movieList.filter { item in
+            item.genre.containsIgnoringCase(find: genre)
+        }
+    }
+    
+    private func getOnlyYear(year: String) -> [CBMovieDataModel] {
+        movieList.filter { item in
+            item.released.containsIgnoringCase(find: year)
+        }
+    }
+     
+    private func getOnlyActor(actor: String) -> [CBMovieDataModel] {
+        movieList.filter { item in
+            item.actors.containsIgnoringCase(find: actor)
+        }
+    }
+    
+    private func getOnlyDirector(director: String) -> [CBMovieDataModel] {
+        movieList.filter { item in
+            item.director.containsIgnoringCase(find: director)
+        }
+    }
+    
+}
+
+
 extension String {
     func contains(find: String) -> Bool{
         return self.range(of: find) != nil

@@ -10,23 +10,33 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var movieUITableView: UITableView!
     @IBOutlet weak var movieSearchBar: UISearchBar!
-
+    
     
     lazy var vm: CBMainVM = CBMainVM()
-
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         registerCell()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-               NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     
     private func registerCell() {
         movieUITableView.register(UINib(nibName: "CBMovieTypeTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieTypeTVCell")
         movieUITableView.register(UINib(nibName: "CBMovieCategoryTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieCategoryTVCell")
-
     }
 }
 
@@ -63,7 +73,8 @@ extension ViewController: UITableViewDelegate {
             sectionHeader.backgroundColor = .white
             sectionHeader.tag = section
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.toggleSection(_:)))
-
+            tap.cancelsTouchesInView = false
+            
             sectionHeader.addGestureRecognizer(tap)
             
             let titleLabel = UILabel()
@@ -102,7 +113,7 @@ extension ViewController: UITableViewDelegate {
                 lineView.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
                 lineView.bottomAnchor.constraint(equalTo: sectionHeader.bottomAnchor, constant: 0).isActive = true
             }
-                 
+            
             
             return sectionHeader
         }
@@ -125,7 +136,20 @@ extension ViewController: UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        if vm.data[indexPath.section].row[indexPath.row].identifier == "CBMovieCategoryTVCell" {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let categoryVC = storyboard.instantiateViewController(withIdentifier: "CBCategoryViewController") as! CBCategoryViewController
+           
+            if let title =  vm.data[indexPath.section].row[indexPath.row] as? CBCategoryDataModel {
+                categoryVC.title = title.category
+                categoryVC.movieList = vm.getMovieListForNextScreen(type: vm.data[indexPath.section].title ?? "", search: title.category)
+            }
+            self.navigationController?.pushViewController(categoryVC, animated: true)
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let categoryVC = storyboard.instantiateViewController(withIdentifier: "CBCategoryViewController")
+            self.navigationController?.pushViewController(categoryVC, animated: true)
+        }
     }
 }
 
@@ -155,9 +179,9 @@ extension ViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        DispatchQueue.main.async { [weak self] in
-            self?.movieUITableView.reloadData()
-        }
+//        DispatchQueue.main.async { [weak self] in
+//            self?.movieUITableView.reloadData()
+//        }
         vm.searchString = searchText
         vm.isSearching = !searchText.isEmpty
         if searchText.isEmpty {
@@ -168,15 +192,5 @@ extension ViewController: UISearchBarDelegate {
         DispatchQueue.main.async { [weak self] in
             self?.movieUITableView.reloadData()
         }
-    }
-}
-
-extension ViewController {
-    @objc func keyboardWillShowNotification(_ notification: Notification) {
-        
-    }
-    
-    @objc func keyboardWillHideNotification(_ notification: NSNotification) {
-        
     }
 }

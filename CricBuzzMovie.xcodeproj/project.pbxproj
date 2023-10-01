@@ -15,6 +15,7 @@
 		E3665B4D2AC85C42003054DA /* CBMovieCategoryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3665B4B2AC85C42003054DA /* CBMovieCategoryTVCell.swift */; };
 		E3665B4E2AC85C42003054DA /* CBMovieCategoryTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3665B4C2AC85C42003054DA /* CBMovieCategoryTVCell.xib */; };
 		E3665B502AC8991E003054DA /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3665B4F2AC8991E003054DA /* KeyboardLayoutConstraint.swift */; };
+		E3665B542AC9202B003054DA /* CBCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3665B532AC9202B003054DA /* CBCategoryViewController.swift */; };
 		E3F523D62AC7FC4300D4A2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F523D52AC7FC4300D4A2D5 /* AppDelegate.swift */; };
 		E3F523D82AC7FC4300D4A2D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F523D72AC7FC4300D4A2D5 /* SceneDelegate.swift */; };
 		E3F523DA2AC7FC4300D4A2D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F523D92AC7FC4300D4A2D5 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 		E3665B4B2AC85C42003054DA /* CBMovieCategoryTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBMovieCategoryTVCell.swift; sourceTree = "<group>"; };
 		E3665B4C2AC85C42003054DA /* CBMovieCategoryTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CBMovieCategoryTVCell.xib; sourceTree = "<group>"; };
 		E3665B4F2AC8991E003054DA /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		E3665B532AC9202B003054DA /* CBCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBCategoryViewController.swift; sourceTree = "<group>"; };
 		E3F523D22AC7FC4300D4A2D5 /* CricBuzzMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CricBuzzMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F523D52AC7FC4300D4A2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3F523D72AC7FC4300D4A2D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,22 @@
 			path = CBMovieCategoryTVCell;
 			sourceTree = "<group>";
 		};
+		E3665B512AC91FEA003054DA /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				E3665B522AC91FF0003054DA /* CBCategoryPage */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		E3665B522AC91FF0003054DA /* CBCategoryPage */ = {
+			isa = PBXGroup;
+			children = (
+				E3665B532AC9202B003054DA /* CBCategoryViewController.swift */,
+			);
+			path = CBCategoryPage;
+			sourceTree = "<group>";
+		};
 		E3F523C92AC7FC4300D4A2D5 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +145,7 @@
 		E3F523D42AC7FC4300D4A2D5 /* CricBuzzMovie */ = {
 			isa = PBXGroup;
 			children = (
+				E3665B512AC91FEA003054DA /* Screen */,
 				E3665B3E2AC821ED003054DA /* Util */,
 				E3F523F02AC816B800D4A2D5 /* DemoFile */,
 				E3F523E92AC815A800D4A2D5 /* MainPage */,
@@ -304,6 +323,7 @@
 				E3665B502AC8991E003054DA /* KeyboardLayoutConstraint.swift in Sources */,
 				E3F523D82AC7FC4300D4A2D5 /* SceneDelegate.swift in Sources */,
 				E3665B442AC82C00003054DA /* CBMainVM.swift in Sources */,
+				E3665B542AC9202B003054DA /* CBCategoryViewController.swift in Sources */,
 				E3F523ED2AC8165000D4A2D5 /* CBMovieTypeTVCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

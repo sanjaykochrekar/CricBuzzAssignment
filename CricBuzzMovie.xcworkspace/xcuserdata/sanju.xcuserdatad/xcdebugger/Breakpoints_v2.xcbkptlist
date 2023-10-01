@@ -14,8 +14,8 @@
             filePath = "CricBuzzMovie/MainPage/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "numberOfSections(in:)"
             landmarkType = "7">
             <Locations>
@@ -68,210 +68,15 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "BC483E27-0FE4-47B4-859C-4D74292B017E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CricBuzzMovie/MainPage/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "searchBarTextDidBeginEditing(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BC483E27-0FE4-47B4-859C-4D74292B017E - 993ab5d1eb8df14d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CricBuzzMovie.ViewController.searchBarTextDidBeginEditing(__C.UISearchBar) -&gt; ()"
-                  moduleName = "CricBuzzMovie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanju/Project/iOS/CricBuzzAssignment/CricBuzzMovie/MainPage/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "130"
-                  endingLineNumber = "130"
-                  offsetFromSymbolStart = "60">
-               </Location>
-               <Location
-                  uuid = "BC483E27-0FE4-47B4-859C-4D74292B017E - 993ab5d1eb8df14d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CricBuzzMovie.ViewController.searchBarTextDidBeginEditing(__C.UISearchBar) -&gt; ()"
-                  moduleName = "CricBuzzMovie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanju/Project/iOS/CricBuzzAssignment/CricBuzzMovie/MainPage/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "130"
-                  endingLineNumber = "130"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "BC483E27-0FE4-47B4-859C-4D74292B017E - 993ab5d1eb8df14d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CricBuzzMovie.ViewController.searchBarTextDidBeginEditing(__C.UISearchBar) -&gt; ()"
-                  moduleName = "CricBuzzMovie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanju/Project/iOS/CricBuzzAssignment/CricBuzzMovie/MainPage/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "130"
-                  endingLineNumber = "130"
-                  offsetFromSymbolStart = "220">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7996F8FC-B269-46D5-B635-9E759DDF3222"
+            uuid = "6DF2F898-ECAE-43C0-8159-D313FE4AC4C6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CricBuzzMovie/MainPage/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "searchBarTextDidEndEditing(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7996F8FC-B269-46D5-B635-9E759DDF3222 - 90e90b67b29f6de2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CricBuzzMovie.ViewController.searchBarTextDidEndEditing(__C.UISearchBar) -&gt; ()"
-                  moduleName = "CricBuzzMovie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanju/Project/iOS/CricBuzzAssignment/CricBuzzMovie/MainPage/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "157"
-                  endingLineNumber = "157"
-                  offsetFromSymbolStart = "220">
-               </Location>
-               <Location
-                  uuid = "7996F8FC-B269-46D5-B635-9E759DDF3222 - 90e90b67b29f6dc3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CricBuzzMovie.ViewController.searchBarTextDidEndEditing(__C.UISearchBar) -&gt; ()"
-                  moduleName = "CricBuzzMovie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanju/Project/iOS/CricBuzzAssignment/CricBuzzMovie/MainPage/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "156"
-                  endingLineNumber = "156"
-                  offsetFromSymbolStart = "220">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1240850C-DBB2-423C-9663-DB9E03090273"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CricBuzzMovie/MainPage/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "toggleSection(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1240850C-DBB2-423C-9663-DB9E03090273 - 506690213264c773"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CricBuzzMovie.ViewController.toggleSection(__C.UITapGestureRecognizer) -&gt; ()"
-                  moduleName = "CricBuzzMovie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanju/Project/iOS/CricBuzzAssignment/CricBuzzMovie/MainPage/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "208">
-               </Location>
-               <Location
-                  uuid = "1240850C-DBB2-423C-9663-DB9E03090273 - 506690213264c773"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CricBuzzMovie.ViewController.toggleSection(__C.UITapGestureRecognizer) -&gt; ()"
-                  moduleName = "CricBuzzMovie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanju/Project/iOS/CricBuzzAssignment/CricBuzzMovie/MainPage/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "396">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1728B2EF-B0D5-4A95-9538-169B451749E6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CricBuzzMovie/MainPage/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "toggleSection(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1728B2EF-B0D5-4A95-9538-169B451749E6 - 506690213264c773"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CricBuzzMovie.ViewController.toggleSection(__C.UITapGestureRecognizer) -&gt; ()"
-                  moduleName = "CricBuzzMovie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanju/Project/iOS/CricBuzzAssignment/CricBuzzMovie/MainPage/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "208">
-               </Location>
-               <Location
-                  uuid = "1728B2EF-B0D5-4A95-9538-169B451749E6 - 506690213264c750"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CricBuzzMovie.ViewController.toggleSection(__C.UITapGestureRecognizer) -&gt; ()"
-                  moduleName = "CricBuzzMovie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanju/Project/iOS/CricBuzzAssignment/CricBuzzMovie/MainPage/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "121"
-                  endingLineNumber = "121"
-                  offsetFromSymbolStart = "208">
-               </Location>
-            </Locations>
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
