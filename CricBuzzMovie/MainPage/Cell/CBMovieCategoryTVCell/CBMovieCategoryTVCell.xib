@@ -20,11 +20,10 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3x5-Tk-i5A">
                         <rect key="frame" x="15" y="12" width="290" height="20"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="3x5-Tk-i5A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="30s-ay-CLU"/>
                     <constraint firstAttribute="trailing" secondItem="3x5-Tk-i5A" secondAttribute="trailing" constant="15" id="Aep-Wh-9I1"/>

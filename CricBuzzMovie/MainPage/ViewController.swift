@@ -70,7 +70,6 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if !vm.isSearching {
             let sectionHeader = UIView()
-            sectionHeader.backgroundColor = .white
             sectionHeader.tag = section
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.toggleSection(_:)))
             tap.cancelsTouchesInView = false
