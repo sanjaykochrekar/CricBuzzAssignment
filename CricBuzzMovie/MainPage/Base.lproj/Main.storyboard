@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Uj-rN-Oan">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
@@ -38,7 +38,7 @@
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search movies by title/actor/genre/director" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fM9-8q-i6j">
                                         <rect key="frame" x="4" y="2" width="385" height="56"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="2Dg-mV-uwy"/>
                                         </connections>
@@ -52,7 +52,7 @@
                                     <constraint firstItem="fM9-8q-i6j" firstAttribute="top" secondItem="Axq-Qd-EWF" secondAttribute="top" constant="2" id="uyM-dJ-sy2"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8P3-ne-Qfj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8P3-ne-Qfj">
                                 <rect key="frame" x="0.0" y="163" width="393" height="655"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="hdp-6v-O44"/>
@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-879" y="18"/>
+            <point key="canvasLocation" x="-1156" y="18"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="xqc-W5-SBM">
@@ -115,10 +115,107 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PSK-eK-s1T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="21" y="18"/>
+            <point key="canvasLocation" x="-366" y="18"/>
+        </scene>
+        <!--Movie Detail-->
+        <scene sceneID="dvO-YN-byE">
+            <objects>
+                <viewController storyboardIdentifier="CBMovieDetailViewController" title="Movie Detail" id="oH0-R7-8Fc" customClass="CBMovieDetailViewController" customModule="CricBuzzMovie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YdQ-3i-VKe">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="b8t-4W-DPr">
+                                <rect key="frame" x="0.0" y="59" width="393" height="1057"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CBMovieDetailHeaderTVCell" rowHeight="309" id="qdX-U4-XcL" customClass="CBMovieDetailHeaderTVCell" customModule="CricBuzzMovie" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="309"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qdX-U4-XcL" id="84Y-EN-Psl">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="309"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movieclapper.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jaY-JL-lE2">
+                                                    <rect key="frame" x="0.0" y="-1.6666666666666572" width="393" height="309.99999999999989"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" systemColor="opaqueSeparatorColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="300" id="w51-hT-Cyu"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wy2-jd-uNJ" customClass="Gradient" customModule="CricBuzzMovie" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="159" width="393" height="150"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="150" id="fW3-ow-RuA"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                            <color key="value" white="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="NO"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avatar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAH-eT-qRf">
+                                                    <rect key="frame" x="15" y="272.33333333333331" width="363" height="28.666666666666686"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="ZAH-eT-qRf" secondAttribute="bottom" constant="8" id="7gQ-tx-Dqh"/>
+                                                <constraint firstAttribute="trailing" secondItem="jaY-JL-lE2" secondAttribute="trailing" id="8PH-YC-91k"/>
+                                                <constraint firstItem="jaY-JL-lE2" firstAttribute="leading" secondItem="84Y-EN-Psl" secondAttribute="leading" id="AVk-th-Ttn"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZAH-eT-qRf" secondAttribute="trailing" constant="15" id="Dmv-xV-juH"/>
+                                                <constraint firstAttribute="trailing" secondItem="wy2-jd-uNJ" secondAttribute="trailing" id="EN8-wK-h6C"/>
+                                                <constraint firstItem="wy2-jd-uNJ" firstAttribute="leading" secondItem="84Y-EN-Psl" secondAttribute="leading" id="ICe-9W-aKj"/>
+                                                <constraint firstItem="jaY-JL-lE2" firstAttribute="top" secondItem="84Y-EN-Psl" secondAttribute="top" id="Rrr-DU-RRV"/>
+                                                <constraint firstAttribute="bottom" secondItem="wy2-jd-uNJ" secondAttribute="bottom" id="VvL-k5-QWM"/>
+                                                <constraint firstItem="ZAH-eT-qRf" firstAttribute="leading" secondItem="84Y-EN-Psl" secondAttribute="leading" constant="15" id="hrM-yA-4Vb"/>
+                                                <constraint firstAttribute="bottom" secondItem="jaY-JL-lE2" secondAttribute="bottom" id="jfu-5A-px8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="movieTitle" destination="ZAH-eT-qRf" id="tYu-6O-CQl"/>
+                                            <outlet property="posterImage" destination="jaY-JL-lE2" id="kb7-UE-rDO"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="oH0-R7-8Fc" id="xNa-uC-q9h"/>
+                                    <outlet property="delegate" destination="oH0-R7-8Fc" id="8PL-Kc-4rA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Xdj-Mf-k9o"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="b8t-4W-DPr" firstAttribute="leading" secondItem="Xdj-Mf-k9o" secondAttribute="leading" id="H5u-s4-58J"/>
+                            <constraint firstItem="Xdj-Mf-k9o" firstAttribute="bottom" secondItem="b8t-4W-DPr" secondAttribute="bottom" id="Pcg-fm-Vkb"/>
+                            <constraint firstItem="Xdj-Mf-k9o" firstAttribute="trailing" secondItem="b8t-4W-DPr" secondAttribute="trailing" id="mXA-dK-tqS"/>
+                            <constraint firstItem="b8t-4W-DPr" firstAttribute="top" secondItem="Xdj-Mf-k9o" secondAttribute="top" id="qoD-cE-l33"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="393" height="1150"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bMQ-0h-1Wc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="452.67175572519085" y="122.53521126760565"/>
         </scene>
     </scenes>
     <resources>
+        <image name="movieclapper.fill" catalog="system" width="128" height="113"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

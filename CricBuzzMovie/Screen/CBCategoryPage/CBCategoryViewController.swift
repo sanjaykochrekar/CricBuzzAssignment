@@ -33,5 +33,14 @@ extension CBCategoryViewController: UITableViewDataSource {
         return cell as! UITableViewCell
     }
     
-    
+}
+
+
+extension CBCategoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let deatilVC = storyboard.instantiateViewController(withIdentifier: "CBMovieDetailViewController") as! CBMovieDetailViewController
+        deatilVC.movie = movieList[indexPath.row] 
+        self.navigationController?.pushViewController(deatilVC, animated: true)
+    }
 }

@@ -16,6 +16,9 @@
 		E3665B4E2AC85C42003054DA /* CBMovieCategoryTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3665B4C2AC85C42003054DA /* CBMovieCategoryTVCell.xib */; };
 		E3665B502AC8991E003054DA /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3665B4F2AC8991E003054DA /* KeyboardLayoutConstraint.swift */; };
 		E3665B542AC9202B003054DA /* CBCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3665B532AC9202B003054DA /* CBCategoryViewController.swift */; };
+		E374D7D42AC936A900A51E10 /* CBMovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374D7D32AC936A900A51E10 /* CBMovieDetailViewController.swift */; };
+		E374D7D72AC93FC500A51E10 /* CBMovieDetailHeaderTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E374D7D62AC93FC500A51E10 /* CBMovieDetailHeaderTVCell.swift */; };
+		E3921A102AC942D4004D4B64 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3921A0F2AC942D4004D4B64 /* Gradient.swift */; };
 		E3F523D62AC7FC4300D4A2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F523D52AC7FC4300D4A2D5 /* AppDelegate.swift */; };
 		E3F523D82AC7FC4300D4A2D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F523D72AC7FC4300D4A2D5 /* SceneDelegate.swift */; };
 		E3F523DA2AC7FC4300D4A2D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F523D92AC7FC4300D4A2D5 /* ViewController.swift */; };
@@ -38,6 +41,9 @@
 		E3665B4C2AC85C42003054DA /* CBMovieCategoryTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CBMovieCategoryTVCell.xib; sourceTree = "<group>"; };
 		E3665B4F2AC8991E003054DA /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		E3665B532AC9202B003054DA /* CBCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBCategoryViewController.swift; sourceTree = "<group>"; };
+		E374D7D32AC936A900A51E10 /* CBMovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBMovieDetailViewController.swift; sourceTree = "<group>"; };
+		E374D7D62AC93FC500A51E10 /* CBMovieDetailHeaderTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBMovieDetailHeaderTVCell.swift; sourceTree = "<group>"; };
+		E3921A0F2AC942D4004D4B64 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		E3F523D22AC7FC4300D4A2D5 /* CricBuzzMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CricBuzzMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F523D52AC7FC4300D4A2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3F523D72AC7FC4300D4A2D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +93,7 @@
 				E3665B3F2AC82204003054DA /* UIViewController+Extension.swift */,
 				E3665B412AC82BB4003054DA /* CBListViewCell.swift */,
 				E3665B4F2AC8991E003054DA /* KeyboardLayoutConstraint.swift */,
+				E3921A0F2AC942D4004D4B64 /* Gradient.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -111,6 +118,7 @@
 		E3665B512AC91FEA003054DA /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				E374D7D12AC9368100A51E10 /* CBDetailPage */,
 				E3665B522AC91FF0003054DA /* CBCategoryPage */,
 			);
 			path = Screen;
@@ -122,6 +130,23 @@
 				E3665B532AC9202B003054DA /* CBCategoryViewController.swift */,
 			);
 			path = CBCategoryPage;
+			sourceTree = "<group>";
+		};
+		E374D7D12AC9368100A51E10 /* CBDetailPage */ = {
+			isa = PBXGroup;
+			children = (
+				E374D7D52AC93FA600A51E10 /* Cell */,
+				E374D7D32AC936A900A51E10 /* CBMovieDetailViewController.swift */,
+			);
+			path = CBDetailPage;
+			sourceTree = "<group>";
+		};
+		E374D7D52AC93FA600A51E10 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E374D7D62AC93FC500A51E10 /* CBMovieDetailHeaderTVCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E3F523C92AC7FC4300D4A2D5 = {
@@ -317,12 +342,15 @@
 				E3665B492AC8413E003054DA /* CBMovieDataModel.swift in Sources */,
 				E3665B402AC82204003054DA /* UIViewController+Extension.swift in Sources */,
 				E3F523DA2AC7FC4300D4A2D5 /* ViewController.swift in Sources */,
+				E3921A102AC942D4004D4B64 /* Gradient.swift in Sources */,
+				E374D7D72AC93FC500A51E10 /* CBMovieDetailHeaderTVCell.swift in Sources */,
 				E3F523D62AC7FC4300D4A2D5 /* AppDelegate.swift in Sources */,
 				E3665B422AC82BB4003054DA /* CBListViewCell.swift in Sources */,
 				E3665B4D2AC85C42003054DA /* CBMovieCategoryTVCell.swift in Sources */,
 				E3665B502AC8991E003054DA /* KeyboardLayoutConstraint.swift in Sources */,
 				E3F523D82AC7FC4300D4A2D5 /* SceneDelegate.swift in Sources */,
 				E3665B442AC82C00003054DA /* CBMainVM.swift in Sources */,
+				E374D7D42AC936A900A51E10 /* CBMovieDetailViewController.swift in Sources */,
 				E3665B542AC9202B003054DA /* CBCategoryViewController.swift in Sources */,
 				E3F523ED2AC8165000D4A2D5 /* CBMovieTypeTVCell.swift in Sources */,
 			);

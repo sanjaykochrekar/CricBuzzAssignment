@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
+//        hideKeyboardWhenTappedAround()
         registerCell()
     }
     
@@ -147,8 +147,9 @@ extension ViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(categoryVC, animated: true)
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let categoryVC = storyboard.instantiateViewController(withIdentifier: "CBCategoryViewController")
-            self.navigationController?.pushViewController(categoryVC, animated: true)
+            let deatilVC = storyboard.instantiateViewController(withIdentifier: "CBMovieDetailViewController") as! CBMovieDetailViewController
+            deatilVC.movie = vm.data[indexPath.section].row[indexPath.row] as? CBMovieDataModel
+            self.navigationController?.pushViewController(deatilVC, animated: true)
         }
     }
 }
@@ -193,4 +194,9 @@ extension ViewController: UISearchBarDelegate {
             self?.movieUITableView.reloadData()
         }
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
 }
