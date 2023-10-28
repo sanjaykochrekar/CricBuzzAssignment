@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CBMovieDetailHeaderTVCell" rowHeight="300" id="ekz-J4-45G" customClass="CBMovieDetailHeaderTVCell" customModule="CricBuzzMovie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ekz-J4-45G" id="LCD-S8-KtZ">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movieclapper.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Kb4-gg-8Yy">
+                        <rect key="frame" x="0.0" y="-1.6666666666666572" width="393" height="300.99999999999989"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="opaqueSeparatorColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="750" constant="300" id="WzH-7D-sTd"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZYD-14-gtf" customClass="Gradient" customModule="CricBuzzMovie" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="180" width="393" height="120"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" white="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="NO"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avatar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hs-Gh-7mo">
+                        <rect key="frame" x="15" y="263.33333333333331" width="363" height="28.666666666666686"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="5hs-Gh-7mo" firstAttribute="leading" secondItem="LCD-S8-KtZ" secondAttribute="leading" constant="15" id="87d-6f-SN3"/>
+                    <constraint firstAttribute="bottom" secondItem="Kb4-gg-8Yy" secondAttribute="bottom" id="9eV-ff-oLX"/>
+                    <constraint firstAttribute="trailing" secondItem="ZYD-14-gtf" secondAttribute="trailing" id="KRb-HM-GQU"/>
+                    <constraint firstItem="Kb4-gg-8Yy" firstAttribute="leading" secondItem="LCD-S8-KtZ" secondAttribute="leading" id="bQs-8w-qM6"/>
+                    <constraint firstItem="ZYD-14-gtf" firstAttribute="leading" secondItem="LCD-S8-KtZ" secondAttribute="leading" id="f6i-ft-g3K"/>
+                    <constraint firstItem="Kb4-gg-8Yy" firstAttribute="top" secondItem="LCD-S8-KtZ" secondAttribute="top" id="gcw-8V-Tf1"/>
+                    <constraint firstAttribute="bottom" secondItem="5hs-Gh-7mo" secondAttribute="bottom" constant="8" id="gn0-gx-57U"/>
+                    <constraint firstAttribute="trailing" secondItem="Kb4-gg-8Yy" secondAttribute="trailing" id="inQ-ae-L7l"/>
+                    <constraint firstItem="ZYD-14-gtf" firstAttribute="height" secondItem="Kb4-gg-8Yy" secondAttribute="height" multiplier="0.4" id="kmk-hq-Ork"/>
+                    <constraint firstAttribute="trailing" secondItem="5hs-Gh-7mo" secondAttribute="trailing" constant="15" id="pYE-d2-TLh"/>
+                    <constraint firstAttribute="bottom" secondItem="ZYD-14-gtf" secondAttribute="bottom" id="qcU-PB-rwk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="movieTitle" destination="5hs-Gh-7mo" id="qLr-U3-l4t"/>
+                <outlet property="posterImage" destination="Kb4-gg-8Yy" id="5Qz-Du-bz8"/>
+            </connections>
+            <point key="canvasLocation" x="-127.48091603053435" y="18.661971830985916"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="movieclapper.fill" catalog="system" width="128" height="113"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -14,15 +14,25 @@ enum RatingAgency: String {
     case none
 }
 
-class CBMovieDetailViewController: UIViewController {
+class CBMovieDetailViewController: UITableViewController {
+    weak var coordinator: MainCoordinator?
+    
     var movie: CBMovieDataModel?
     var slectedRatingAgency = RatingAgency.imbd
     
-    @IBOutlet weak var movieTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerCell()
         addActionButton()
+        
+    }
+    
+    
+    private func registerCell() {
+        tableView.register(UINib(nibName: "CBMovieDetailHeaderTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieDetailHeaderTVCell")
+        tableView.register(UINib(nibName: "CBMovieDetailRatingTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieDetailRatingTVCell")
+        tableView.register(UINib(nibName: "CBMovieDetailAllInfoTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieDetailAllInfoTVCell")
     }
     
     func addActionButton(){
@@ -64,19 +74,21 @@ class CBMovieDetailViewController: UIViewController {
     
     func setRating() {
         DispatchQueue.main.async { [weak self] in
-            self?.movieTableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+            self?.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
         }
     }
     
 }
 
 
-extension CBMovieDetailViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension CBMovieDetailViewController {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         3
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CBMovieDetailHeaderTVCell", for: indexPath) as! CBMovieDetailHeaderTVCell
             cell.popuplate(image: movie?.poster, movieName: movie?.title ?? "")

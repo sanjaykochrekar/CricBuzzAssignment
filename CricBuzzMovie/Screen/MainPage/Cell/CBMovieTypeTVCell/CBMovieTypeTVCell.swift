@@ -14,9 +14,7 @@ class CBMovieTypeTVCell: UITableViewCell {
     @IBOutlet weak var language: UILabel!
     @IBOutlet weak var year: UILabel!
     
-    
-    var itemImage: SDImageCache = SDImageCache()
-    
+        
 
     override func awakeFromNib() {
         super.awakeFromNib()
