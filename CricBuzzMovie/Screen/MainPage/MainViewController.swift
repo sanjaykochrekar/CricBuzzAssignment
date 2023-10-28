@@ -35,14 +35,12 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hideKeyboardWhenTappedAround()
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         mainView.searchBar.delegate = self
         registerCell()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
@@ -61,10 +59,7 @@ class MainViewController: UIViewController {
     
     
     @objc func keyboardWillShow(sender: NSNotification) {
-        //Looks for single or multiple taps.
         dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
         dismissKeyboardGesture?.cancelsTouchesInView = false
         
         view.addGestureRecognizer(dismissKeyboardGesture!)
@@ -76,8 +71,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    @objc override func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
