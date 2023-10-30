@@ -72,7 +72,7 @@ extension CBMainVM {
             genreList.formUnion(cleanlist)
         }
         
-        var genre = CBSectionDataModel(title: "Genre")
+        var genre = CBSectionDataModel(title: .genre)
         for (_, item ) in genreList.sorted().enumerated() {
             genre.row.append(CBCategoryDataModel(category: item))
         }
@@ -93,7 +93,7 @@ extension CBMainVM {
             }
         }
         
-        var year = CBSectionDataModel(title: "Year")
+        var year = CBSectionDataModel(title: .year)
         
         for (_, item ) in yearList.sorted().enumerated() {
             year.row.append(CBCategoryDataModel(category: item))
@@ -112,7 +112,7 @@ extension CBMainVM {
             genreList.formUnion(cleanlist)
         }
         
-        var genre = CBSectionDataModel(title: "Actors")
+        var genre = CBSectionDataModel(title: .actors)
         for (_, item ) in genreList.sorted().enumerated() {
             genre.row.append(CBCategoryDataModel(category: item))
         }
@@ -129,7 +129,7 @@ extension CBMainVM {
             genreList.formUnion(cleanlist)
         }
         
-        var genre = CBSectionDataModel(title: "Directors")
+        var genre = CBSectionDataModel(title: .director)
         for (_, item ) in genreList.sorted().enumerated() {
             genre.row.append(CBCategoryDataModel(category: item))
         }
@@ -138,7 +138,7 @@ extension CBMainVM {
     
     
     func getAllMovies() -> CBSectionDataModel {
-        var allItems = CBSectionDataModel(title: "All Movies")
+        var allItems = CBSectionDataModel(title: .allMovies)
         allItems.row.append(contentsOf: movieList)
         return allItems
     }
@@ -160,19 +160,24 @@ extension CBMainVM {
 // MARK: - Next Screen query
 extension CBMainVM {
     
-    func getMovieListForNextScreen(type: String, search: String) -> [CBMovieDataModel] {
+    func getMovieListForNextScreen(type: MovieCategoryType, search: String) -> [CBMovieDataModel] {
         switch type {
-        case "Genre":
+        case .genre:
             return getOnlyGenre(genre: search)
-        case "Year":
-            return getOnlyYear(year: search)       
-        case "Actors":
+        case .year:
+            return getOnlyYear(year: search)
+        case .actors:
             return getOnlyActor(actor: search)
-        case "Directors":
+        case .director:
             return getOnlyDirector(director: search)
-        default:
+        case .allMovies:
             return movieList
         }
+    }
+    
+    
+    func getAllMovies() -> [CBMovieDataModel] {
+        movieList
     }
     
     

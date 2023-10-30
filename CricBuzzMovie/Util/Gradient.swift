@@ -30,12 +30,18 @@ public class Gradient: UIView {
             gradientLayer.endPoint   = diagonalMode ? .init(x: 1, y: 1) : .init(x: 0.5, y: 1)
         }
     }
+    
+    
     func updateLocations() {
         gradientLayer.locations = [startLocation as NSNumber, endLocation as NSNumber]
     }
+    
+    
     func updateColors() {
         gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
     }
+    
+    
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updatePoints()

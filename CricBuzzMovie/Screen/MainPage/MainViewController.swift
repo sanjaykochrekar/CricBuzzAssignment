@@ -12,12 +12,19 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    @IBOutlet weak var movieUITableView: UITableView!
-    @IBOutlet weak var movieSearchBar: UISearchBar!
+    weak var coordinator: MainCoordinator?
     
+    private var mainView: MainView!
+    private var dismissKeyboardGesture: UITapGestureRecognizer?
     
     lazy var vm: CBMainVM = CBMainVM()
     
+    
+    override func loadView() {
+        super.loadView()
+        mainView = MainView(frame: view.frame)
+        view = mainView
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,8 +34,14 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //hideKeyboardWhenTappedAround()
+        
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
+        mainView.searchBar.delegate = self
         registerCell()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     
@@ -39,8 +52,34 @@ class MainViewController: UIViewController {
     
     
     private func registerCell() {
-        movieUITableView.register(UINib(nibName: "CBMovieTypeTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieTypeTVCell")
-        movieUITableView.register(UINib(nibName: "CBMovieCategoryTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieCategoryTVCell")
+        mainView.tableView.register(UINib(nibName: "CBMovieTypeTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieTypeTVCell")
+        mainView.tableView.register(UINib(nibName: "CBMovieCategoryTVCell", bundle: nil), forCellReuseIdentifier: "CBMovieCategoryTVCell")
+    }
+    
+    
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+        dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        dismissKeyboardGesture?.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(dismissKeyboardGesture!)
+        
+        if let keyboardFrame: NSValue = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            mainView.tableviewBottomConstrain?.constant = -keyboardHeight
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc func keyboardWillHide(sender: NSNotification) {
+        if let dismissKeyboardGesture {
+            view.removeGestureRecognizer(dismissKeyboardGesture)
+        }
+        mainView.tableviewBottomConstrain?.constant = 0
     }
     
 }
@@ -75,7 +114,7 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if !vm.isSearching {
             let sectionHeader = UIView()
-            sectionHeader.backgroundColor = UIColor.appColor(.background)
+            sectionHeader.backgroundColor = .background//UIColor.appColor(.background)
             sectionHeader.tag = section
             
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.toggleSection(_:)))
@@ -86,7 +125,7 @@ extension MainViewController: UITableViewDelegate {
             let titleLabel = UILabel()
             sectionHeader.addSubview(titleLabel)
             
-            titleLabel.text = vm.data[section].title
+            titleLabel.text = vm.data[section].title?.rawValue
             titleLabel.translatesAutoresizingMaskIntoConstraints = false
             titleLabel.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
             titleLabel.centerYAnchor.constraint(equalTo: sectionHeader.centerYAnchor, constant: 0).isActive = true
@@ -127,9 +166,13 @@ extension MainViewController: UITableViewDelegate {
     
     @objc func toggleSection(_ sender: UITapGestureRecognizer) {
         if let section = sender.view?.tag {
+            if section == 4 {
+                coordinator?.navigateToMoviewList(movies: vm.getAllMovies())
+                return
+            }
             vm.toggleSection(section)
             DispatchQueue.main.async { [weak self] in
-                self?.movieUITableView.reloadSections(IndexSet(integer: section), with: .fade)
+                self?.mainView.tableView.reloadSections(IndexSet(integer: section), with: .fade)
             }
         }
     }
@@ -142,19 +185,17 @@ extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if vm.data[indexPath.section].row[indexPath.row].identifier == "CBMovieCategoryTVCell" {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let categoryVC = storyboard.instantiateViewController(withIdentifier: "CBCategoryViewController") as! CBCategoryViewController
             
             if let title =  vm.data[indexPath.section].row[indexPath.row] as? CBCategoryDataModel {
-                categoryVC.title = title.category
-                categoryVC.movieList = vm.getMovieListForNextScreen(type: vm.data[indexPath.section].title ?? "", search: title.category)
+                let title = title.category
+                let movieList = vm.getMovieListForNextScreen(type: vm.data[indexPath.section].title ?? .allMovies, search: title)
+                coordinator?.navigateToMoviewList(movies: movieList, title: title)
             }
-            self.navigationController?.pushViewController(categoryVC, animated: true)
+           
         } else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let deatilVC = storyboard.instantiateViewController(withIdentifier: "CBMovieDetailViewController") as! CBMovieDetailViewController
-            deatilVC.movie = vm.data[indexPath.section].row[indexPath.row] as? CBMovieDataModel
-            self.navigationController?.pushViewController(deatilVC, animated: true)
+            if let movies = vm.data[indexPath.section].row[indexPath.row] as? CBMovieDataModel {
+                coordinator?.navigateToDetail(movies: movies)
+            }
         }
     }
     
@@ -169,7 +210,7 @@ extension MainViewController: UISearchBarDelegate {
             vm.setData()
         }
         DispatchQueue.main.async { [weak self] in
-            self?.movieUITableView.reloadData()
+            self?.mainView.tableView.reloadData()
         }
     }
     
@@ -181,7 +222,7 @@ extension MainViewController: UISearchBarDelegate {
             vm.setData()
         }
         DispatchQueue.main.async { [weak self] in
-            self?.movieUITableView.reloadData()
+            self?.mainView.tableView.reloadData()
         }
     }
     
@@ -195,13 +236,23 @@ extension MainViewController: UISearchBarDelegate {
             vm.searchMovie()
         }
         DispatchQueue.main.async { [weak self] in
-            self?.movieUITableView.reloadData()
+            self?.mainView.tableView.reloadData()
         }
     }
     
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        vm.searchString = ""
+        vm.isSearching = false
+        vm.setData()
+        DispatchQueue.main.async { [weak self] in
+            self?.mainView.tableView.reloadData()
+        }
     }
     
 }

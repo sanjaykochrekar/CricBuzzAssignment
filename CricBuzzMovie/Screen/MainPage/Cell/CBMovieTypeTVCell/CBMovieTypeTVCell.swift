@@ -14,9 +14,7 @@ class CBMovieTypeTVCell: UITableViewCell {
     @IBOutlet weak var language: UILabel!
     @IBOutlet weak var year: UILabel!
     
-    
-    var itemImage: SDImageCache = SDImageCache()
-    
+        
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,7 +43,7 @@ extension CBMovieTypeTVCell: CBListViewCell {
             }
             movieName.text = safeData.title
             language.text = "Language: \(safeData.language)"
-            year.text = "Year: \(safeData.year)"
+            year.text = "Year: \(safeData.released)"
         }
     }
 }
