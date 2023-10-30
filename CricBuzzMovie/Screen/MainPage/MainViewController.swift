@@ -125,7 +125,7 @@ extension MainViewController: UITableViewDelegate {
             let titleLabel = UILabel()
             sectionHeader.addSubview(titleLabel)
             
-            titleLabel.text = vm.data[section].title
+            titleLabel.text = vm.data[section].title?.rawValue
             titleLabel.translatesAutoresizingMaskIntoConstraints = false
             titleLabel.leadingAnchor.constraint(equalTo: sectionHeader.leadingAnchor, constant: 15).isActive = true
             titleLabel.centerYAnchor.constraint(equalTo: sectionHeader.centerYAnchor, constant: 0).isActive = true
@@ -166,6 +166,10 @@ extension MainViewController: UITableViewDelegate {
     
     @objc func toggleSection(_ sender: UITapGestureRecognizer) {
         if let section = sender.view?.tag {
+            if section == 4 {
+                coordinator?.navigateToMoviewList(movies: vm.getAllMovies())
+                return
+            }
             vm.toggleSection(section)
             DispatchQueue.main.async { [weak self] in
                 self?.mainView.tableView.reloadSections(IndexSet(integer: section), with: .fade)
@@ -184,13 +188,13 @@ extension MainViewController: UITableViewDelegate {
             
             if let title =  vm.data[indexPath.section].row[indexPath.row] as? CBCategoryDataModel {
                 let title = title.category
-                let movieList = vm.getMovieListForNextScreen(type: vm.data[indexPath.section].title ?? "", search: title)
-                coordinator?.navigateToCategory(data: movieList, title: title)
+                let movieList = vm.getMovieListForNextScreen(type: vm.data[indexPath.section].title ?? .allMovies, search: title)
+                coordinator?.navigateToMoviewList(movies: movieList, title: title)
             }
            
         } else {
             if let movies = vm.data[indexPath.section].row[indexPath.row] as? CBMovieDataModel {
-                coordinator?.navigateToDetail(movies: movies )
+                coordinator?.navigateToDetail(movies: movies)
             }
         }
     }

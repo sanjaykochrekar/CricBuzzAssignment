@@ -43,7 +43,7 @@ extension CBMovieTypeTVCell: CBListViewCell {
             }
             movieName.text = safeData.title
             language.text = "Language: \(safeData.language)"
-            year.text = "Year: \(safeData.year)"
+            year.text = "Year: \(safeData.released)"
         }
     }
 }

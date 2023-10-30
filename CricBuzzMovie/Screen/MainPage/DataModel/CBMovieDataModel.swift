@@ -5,11 +5,19 @@
 //  Created by Sanju on 30/09/23.
 //
 
+enum MovieCategoryType: String {
+    case genre = "Genre"
+    case year = "Year"
+    case actors = "Actors"
+    case director = "Director"
+    case allMovies = "All Movies"
+}
+
 
 // MARK: - CBSectionDataModel
 struct CBSectionDataModel {
     var row: [CBListViewCellDataModel] = []
-    var title: String?
+    var title: MovieCategoryType?
     var isExpanded: Bool = false
 }
 
